@@ -13,15 +13,13 @@ namespace OPENCADMUS
 
     
 
-  
-
     // === External Intersection Functions ===
-    std::vector<Shape> Intersect(const Point &a, const Point &b)
+    Shapes Intersect(const Point &a, const Point &b)
     {
         return (a == b) ? std::vector{Shape(a)} : std::vector<Shape>{};
     }
 
-    std::vector<Shape> Intersect(const Line &l1, const Line &l2)
+    Shapes Intersect(const Line &l1, const Line &l2)
     {
         double x1 = l1.start.x, y1 = l1.start.y;
         double x2 = l1.end.x, y2 = l1.end.y;
@@ -49,7 +47,7 @@ namespace OPENCADMUS
         return {};
     }
 
-    std::vector<Shape> Intersect(const Circle &c, const Line &l)
+    Shapes Intersect(const Circle &c, const Line &l)
     {
         double dx = l.end.x - l.start.x;
         double dy = l.end.y - l.start.y;
@@ -75,13 +73,13 @@ namespace OPENCADMUS
         return result;
     }
 
-    std::vector<Shape> Intersect(const Line &l, const Circle &c)
+    Shapes Intersect(const Line &l, const Circle &c)
     {
         return Intersect(c, l);
     }
 
     // === Public Intersect Dispatcher ===
-    std::vector<Shape> Intersect(const Shape &a, const Shape &b)
+    Shapes Intersect(const Shape &a, const Shape &b)
     {
         if (auto pa = a.as<Point>())
         {
