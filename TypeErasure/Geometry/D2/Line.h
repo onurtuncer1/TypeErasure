@@ -3,13 +3,14 @@
 #include <cmath>
 
 #include "Core/Base.h"
+#include "Point.h"
 
-namespace OpenCadmus::Geometry {
+namespace OpenCadmus::Geometry::D2 {
 
     struct Line
     {
-        D2::Point start;
-        D2::Point end;
+        Point start;
+        Point end;
 
         bool operator==(const Line &other) const
         {
